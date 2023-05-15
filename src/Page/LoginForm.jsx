@@ -2,14 +2,21 @@ import React from 'react'
 import IconTache from '../Components/IconTaches/IconTache';
 import { useState } from 'react';
 import LoginFormInput from '../Components/FormInputs/LoginFormInput';
-
+import { NavLink } from 'react-router-dom'
 
 const LoginForm = (props) => {
-    const [values, setValues] = useState({// déclaration des valeurs des variables d'état
-        email: "",
-        password: "",
-    });
-    const inputs = [
+  const myStyleLink = {
+    fontStyle: "italic",
+    color:"blue",
+    fontSize:"12px"
+  }
+
+  const [values, setValues] = useState({// déclaration des valeurs des variables d'état
+      email: "",
+      password: "",
+  });
+  
+  const inputs = [
         {
           id: 1,
           name: 'email',
@@ -31,9 +38,9 @@ const LoginForm = (props) => {
           pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,50}$`,
           required: true, 
         },
-    ];
+  ];
       
-    const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
         e.preventDefault();
         // Send a POST request
       const res = await fetch("http://localhost:5000/api/auth/login",{
@@ -47,20 +54,21 @@ const LoginForm = (props) => {
       body: JSON.stringify({
         values
       })
-    }
-    )
+    })
     const data = await res.json();
     if(res.ok){
       localStorage.setItem('token', data.token);
-      return data.user
+      // return data.user
+      window.location.href = "/accueil";
+
     }else {throw('Error signin')};
 
-}
+  }
 
+  const onChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
+  }
 
-    const onChange = (e) => {
-        setValues({...values, [e.target.name]: e.target.value})
-    }
   return (
     <div className='container d-flex justify-content-center align-items-center mt-5'>
         <div className='col-6 d-flex justify-content-evenly'>
@@ -77,8 +85,8 @@ const LoginForm = (props) => {
                 ))}
                 <input className="btn btn-primary mt-3" type="submit" value="Se connecter" /> 
             </form>
+            <NavLink className="nav-link col-12 text-center mt-5" style={myStyleLink} to="/signup">Pas encore de compte ?</NavLink>
         </div>
-
     </div>
   )
 }

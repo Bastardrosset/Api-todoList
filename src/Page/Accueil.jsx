@@ -1,13 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route,Link, Navigate } from 'react-router-dom';
-import CreateToDoListe from './CreateToDoListe';
+import { Link } from 'react-router-dom';
 import IconTache from '../Components/IconTaches/IconTache';
 
 import Bouton from '../Components/Bouton/Bouton';
+import Logout from '../Components/Auth/Logout'
 
 const Accueil = () => {
   return (
     <>
+    <Logout/>
       <div className='container mt-3'>
         <div className='d-flex align-items-center justify-content-center mt-5 mb-5'>
         < IconTache />

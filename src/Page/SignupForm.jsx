@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import IconTache from '../Components/IconTaches/IconTache';
 import SignupFormInput from '../Components/FormInputs/SignUpFormInput';
+import { NavLink } from 'react-router-dom'
 
 
 const SignupForm = () => {
+
+  const myStyleLink = {
+    fontStyle: "italic",
+    color:"blue",
+    fontSize:"12px"
+  }
 
   const [values, setValues] = useState({
     pseudo: "",
@@ -50,6 +57,7 @@ const SignupForm = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault()
+    const res = await
     fetch("http://localhost:5000/api/auth/register",{
       method: "POST",
       crossDomain: true,
@@ -61,10 +69,15 @@ const SignupForm = () => {
       body: JSON.stringify({
         values
       })
-    }
+    })
+    const data = await res.json();
+    if(res.ok){
+      localStorage.setItem('token', data.token);
+      // return data.user
+      window.location.href = "/accueil";
 
-  )}
-
+    }else {throw('Error register')};
+  }
 
   return (
     <div className='container d-flex justify-content-center align-items-center mt-5'>
@@ -82,9 +95,9 @@ const SignupForm = () => {
             ))}
             <input className="btn btn-primary mt-3" type="submit" value="Valider inscription" />
           </form>
+          <NavLink className="nav-link col-12 text-center mt-5" style={myStyleLink} to="/">Déja un compte ?</NavLink>
         </div>
     </div>
-
   )
 }
 
