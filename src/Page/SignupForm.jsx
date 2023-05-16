@@ -74,7 +74,7 @@ const SignupForm = () => {
     if(res.ok){
       localStorage.setItem('token', data.token);
       // return data.user
-      window.location.href = "/accueil";
+      window.location.href = "/";
 
     }else {throw('Error register')};
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import IconTache from '../IconTaches/IconTache';
 
 import { NavLink } from 'react-router-dom';
+import Logout from '../Auth/Logout'
   const myStyleFontNav = {
     fontWeight:"bolder",
     fontSize:"20px",
@@ -22,6 +23,9 @@ const Navbar = () => {
                     <NavLink className="nav-link col-12" style={myStyleFontNav} to="/task">Nouvelle tache</NavLink>
                 </div>
             </div>
+        </div>
+        <div className="">
+          <Logout/>
         </div>
       </nav>
     </>

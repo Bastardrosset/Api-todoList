@@ -5,6 +5,9 @@ const Logout = () => {
   const myStyleOff = {
     listStyleType: "none"
   }
+  const myHover = {
+    cursor:'pointer'
+  }
     const logout = async () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
@@ -14,7 +17,7 @@ const Logout = () => {
   return (
     <div className="postion-relative">
       <li onClick={logout} style={myStyleOff} className='position-absolute top-0 end-0'>
-        <i className="fas fa-power-off mt-3 me-3"></i>
+        <i className="fas fa-power-off mt-3 me-3" style={myHover}></i>
       </li>
     </div>
   )

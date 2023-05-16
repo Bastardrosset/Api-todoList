@@ -5,7 +5,7 @@ import ListUser from '../Components/ListUsers/ListUser';
 
 const CreateToDoListe = () => {
     const [pseudo, setPseudo] = useState('');
-    const [posterId, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [name, setNomTache] = useState('');
     const [category, setCategorie] = useState('');
     const [description, setDescription] = useState('');
@@ -46,19 +46,20 @@ const CreateToDoListe = () => {
     const updateChange = (e) =>{
         setUpdate(e.target.value)
     }
-    const formSubmit = (e) =>{
+    const formSubmit = async (e) =>{
     e.preventDefault()
-    fetch("http://localhost:5000/api/posts",{
+    await fetch("http://localhost:5000/api/posts/create",{
         method: "POST",
         crossDomain: true,
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Origin": "*",
+          Authorization: 'Bearer token'
         },
         body: JSON.stringify({
           pseudo,
-          posterId,
+          email,
           name,
           category,
           description,
@@ -82,8 +83,7 @@ const CreateToDoListe = () => {
                     type="date" 
                     id="update" 
                     name="trip-start" 
-                    value="2023-03-20"
-                     min="2023/03/20" 
+                     min="2023/05/20" 
                      max="2023/03/30" 
                      onChange={updateChange} />
                 </div>
@@ -126,11 +126,12 @@ const CreateToDoListe = () => {
                             id="prioriteTache" 
                             onChange={priorityChange} 
                             required>
-                                <option disabled value={2}></option>
+                                <option disabled value=""></option>
+                                <option></option>
                                 <option value={1}>Basse</option>
                                 <option value={2}>Moyenne</option>
                                 <option value={3}>Haute</option>
-                        </select>
+                            </select>
                     </div>
                 </div>
                 <div className="row mt-4 d-flex justify-content-center">
@@ -166,8 +167,7 @@ const CreateToDoListe = () => {
                         type="date" 
                         id="start" 
                         name="trip-start" 
-                        value="2023-03-20" 
-                        min="2023/03/20" 
+                        min="2023/05/20" 
                         max="2023/03/24" 
                         onChange={startDateChange} 
                         required />
