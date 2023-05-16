@@ -49,5 +49,5 @@ console.log(user)
 
 // Function déconnection
 module.exports.logout = (req, res) => {
-    return res.redirect('/home');
+    return res.redirect('/');
 };

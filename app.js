@@ -13,13 +13,12 @@ const morgan = require("morgan");
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // accès à l'API depuis n'importe quelle origine ( '*' )
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'); // ajouter les headers mentionnés aux requêtes envoyées vers l'API
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, , Authorization'); // ajouter les headers mentionnés aux requêtes envoyées vers l'API
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS'); // envoyer des requêtes avec les méthodes mentionnées 
     next();
   });
 
 // Headers & autorizations
-// app.use(helmet())
 app.use(cors());
 
 // Middleware

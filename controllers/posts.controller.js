@@ -12,8 +12,9 @@ module.exports.readPost = (req, res) => {
 //function créer un post
 module.exports.createPost = async (req, res) => {
     const newPost = new ModelTask({
+       
         pseudo: req.body.pseudo,
-        posterId: req.body.email,
+        email: req.body.email,
         name: req.body.name,
         description: req.body.description,
         category: req.body.category,
@@ -25,6 +26,7 @@ module.exports.createPost = async (req, res) => {
 
     try {
         const post = await newPost.save();
+        console.log('La tache :'+ post + ' a ete ajouté')
         return res.status(201).json(post);
         
     } catch (error) {
