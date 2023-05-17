@@ -20,7 +20,8 @@ const Accueil = () => {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Origin": "*",
+          Authorization: 'Bearer token'
         }, 
       })
       const data = await response.json();

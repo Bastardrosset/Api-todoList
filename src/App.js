@@ -22,7 +22,7 @@ function App() {
         <Route path='/signup' exact Component={SignupForm} />
         <Route path='/task' exact Component={CreateToDoListe} />
         <Route path='/list' exact Component={ConsultToDoList} />
-        <Route path='/cardTask' exact Component={CardTask} />
+        <Route path='/cardTask/:id' exact Component={CardTask} />
       </Routes>
     </BrowserRouter>
     

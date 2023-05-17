@@ -43,7 +43,7 @@ const LoginForm = (props) => {
   const handleLogin = async (e) => {
         e.preventDefault();
         // Send a POST request
-      const res = await fetch("http://localhost:5000/api/auth/login",{
+      const res = await     fetch("http://localhost:5000/api/auth/login",{
       method: "POST",
       crossDomain: true,
       headers: {

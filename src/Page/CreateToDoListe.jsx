@@ -48,7 +48,7 @@ const CreateToDoListe = () => {
     }
     const formSubmit = async (e) =>{
     e.preventDefault()
-    await fetch("http://localhost:5000/api/posts/create",{
+    const res = await fetch("http://localhost:5000/api/posts/create",{
         method: "POST",
         crossDomain: true,
         headers: {
@@ -69,8 +69,15 @@ const CreateToDoListe = () => {
           deadline,
           update,
         })
-      }
-    )}
+      })
+     if(res.ok){
+      // return data.user
+      window.location.href = "/list";
+
+    }else {throw('Error')};
+    }
+
+
   return (  
     <>
     <Navbar/>
@@ -96,8 +103,8 @@ const CreateToDoListe = () => {
                         type="text" 
                         className="form-control" 
                         id="pseudo" 
-                        onChange={pseudoChange} 
-                        required />
+                        required 
+                        onChange={pseudoChange} />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="email" className="form-label">Email</label>
@@ -105,8 +112,8 @@ const CreateToDoListe = () => {
                         type="email" 
                         className="form-control" 
                         id="email" 
-                        onChange={emailChange} 
-                        required />
+                        required 
+                        onChange={emailChange} />
                     </div>
                 </div>
                 <div className="row mt-4 d-flex justify-content-evenly">
@@ -128,9 +135,9 @@ const CreateToDoListe = () => {
                             required>
                                 <option disabled value=""></option>
                                 <option></option>
-                                <option value={1}>Basse</option>
-                                <option value={2}>Moyenne</option>
-                                <option value={3}>Haute</option>
+                                <option value={'Basse'}>Basse</option>
+                                <option value={'Moyenne'}>Moyenne</option>
+                                <option value={'Haute'}>Haute</option>
                             </select>
                     </div>
                 </div>
