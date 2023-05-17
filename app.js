@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const helmet = require('helmet');
 const mongoSanitize = require("express-mongo-sanitize");
 require('dotenv').config({ path: './config/.env' });
 require('./config/dataBase');
 const bodyParser = require("body-parser");
 const postRoutes = require('./routes/postRoutes');
-const authRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 
 const morgan = require("morgan");
 
@@ -38,6 +38,7 @@ app.use(bodyParser.json());
 
 
 app.use('/api/auth', authRoutes)
+app.use('/api/users', usersRoutes)
 app.use('/api/posts', postRoutes);
 
 module.exports = app;

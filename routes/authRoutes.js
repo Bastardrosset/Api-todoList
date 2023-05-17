@@ -13,9 +13,5 @@ router.post('/login', authCtrl.signIn);
 // Route déconnection
 router.get('/logout', authCtrl.logout);
 
-router.get('/', userCtrl.getAllUsers);
-router.get('/:id', userCtrl.userInfo);
-router.delete('/:id', userCtrl.deleteUser);
-
 
 module.exports = router;

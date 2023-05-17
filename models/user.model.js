@@ -27,9 +27,10 @@ const userSchema = mongoose.Schema({
             minlength: 6
         },
         isAdmin: {
-            type: Boolean,
-            default: false,
-        }
+            type: String,
+            enum: ['User', 'Admin'], // Les rôles valides
+            default: 'User' // Rôle par défaut
+          },
     },
     {
         timestamps: true,

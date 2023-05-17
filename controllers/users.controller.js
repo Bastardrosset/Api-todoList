@@ -3,7 +3,19 @@ const ObjectId = require('mongoose').Types.ObjectId; //ObjectId,type spécial ut
 
 // Function trouve tous les utilisateurs
 exports.getAllUsers = async (req, res) => {
-    const users = await UserModel.find().select('-password'); // select -password permet d'éviter de faire transiter le password
+    const users = await UserModel.find().select('-password'); 
+    const usersWithRoles = users.map((user) => {
+        let isAdminString = 'User'; // Valeur par défaut pour le rôle
+  
+        if (user.isAdmin === true) {
+          roleString = 'Admin';
+        }
+  
+        return {
+          ...user._doc,
+          isAdmin: isAdminString
+        };
+      });
     res.status(200).json(users)
 }
 
