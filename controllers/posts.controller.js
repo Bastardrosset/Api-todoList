@@ -4,11 +4,32 @@ const ModelTask = require('../models/taskModel');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 //function affiche les posts
-module.exports.readPost = (req, res) => {
+module.exports.readAllPosts = (req, res) => {
     const posts = ModelTask.find() // méthode find() permet de renvoyer un tableau contenant tous les Sauces dans la BD
     .then((posts) => res.status(200).json(posts))
     .catch((error) => res.status(400).json({ error }));
 };
+
+//function affiche un post/:id
+module.exports.readPost = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) { // Methode de verification de l'ID passé en parametres
+        return res.status(400).send('ID inconnu : ' + req.params.id)
+    }
+    try{
+        await ModelTask.findById(req.params.id)
+        .then((post) => {
+            if(!post){
+                return res.status(404).json({ message: 'Tache non trouvé !'})
+            }
+            res.status(200).json(post)
+        })
+        .catch((error) => res.status(401).json({ error }));
+
+    } catch(error){
+        return
+    }
+}
+
 //function créer un post
 module.exports.createPost = async (req, res) => {
     const newPost = new ModelTask({
