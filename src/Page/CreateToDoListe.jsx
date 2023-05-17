@@ -12,7 +12,7 @@ const CreateToDoListe = () => {
     const [priority, setPriority] = useState('');
     const [status, setStatus] = useState('');
     const [startDate, setStartDate] = useState('');
-    const [deadline, setLimitDate] = useState('');
+    const [deadline, setLimitDate] = useState([]);
     const [update, setUpdate] = useState('');
 
     
@@ -162,7 +162,7 @@ const CreateToDoListe = () => {
                         </select>
                     </div>
                     <div className="col-md-2 mt-2">
-                        <label className="form-label me-2" htmlFor="start">Start date:</label>
+                        <label className="form-label me-2" htmlFor="start">Date début:</label>
                         <input 
                         type="date" 
                         id="start" 
@@ -187,14 +187,17 @@ const CreateToDoListe = () => {
                     <div className="col-md-3">
                         <label htmlFor="effectuerAvTache" className="form-label">A éffectuer avant le:</label>
                         <input 
-                        type="text" 
+                        type="date" 
+                        name="trip-start" 
+                        min="2023/05/20" 
+                        max="2023/03/24" 
                         className="form-control" 
                         id="effectuerAvTache" 
                         onChange={limiteDateChange} 
                         required />
                     </div>
                 </div>
-                <div className="col-12 mt-5 d-flex justify-content-center align-items-center">
+                <div className="col-12 mt-5 d-flex justify-content-center align-items-center mb-5">
                     <button className="btn btn-primary col-6" type="submit">Envoyer</button>
                 </div>
             </div>

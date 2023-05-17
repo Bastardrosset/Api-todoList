@@ -7,6 +7,7 @@ import SignupForm from './Page/SignupForm';
 import Accueil from './Page/Accueil';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { UidContext } from './Components/App.context'
+import CardTask from './Components/CardTask/CardTask'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/signup' exact Component={SignupForm} />
         <Route path='/task' exact Component={CreateToDoListe} />
         <Route path='/list' exact Component={ConsultToDoList} />
+        <Route path='/cardTask' exact Component={CardTask} />
       </Routes>
     </BrowserRouter>
     

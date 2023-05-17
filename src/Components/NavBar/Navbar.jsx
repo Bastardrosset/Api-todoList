@@ -13,12 +13,12 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <NavLink className="nav-link col-4" aria-current="page" to="/accueil"><IconTache /></NavLink>
-                <div className="navbar-nav d-flex justify-content-between">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="navbar-nav">
+                    <NavLink className="nav-link col-4" aria-current="page" to="/accueil"><IconTache/></NavLink>
                     <NavLink className="nav-link col-12" style={myStyleFontNav} aria-current="page" to="/list">Consulter toDo-List</NavLink>
                     <NavLink className="nav-link col-12" style={myStyleFontNav} to="/task">Nouvelle tache</NavLink>
                 </div>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Navbar from '../Components/NavBar/Navbar';
 import Table from 'react-bootstrap/Table';
+import IconEdite from '../Components/IconEdites/IconEdite';
+import { NavLink } from 'react-router-dom';
 
 class ConsultToDoListe extends Component {
   render() {
@@ -15,13 +17,9 @@ class ConsultToDoListe extends Component {
               <th>Mis à jour le</th>
               <th>Pseudo</th>
               <th>Email</th>
-              <th>Task</th>
-              <th>priority</th>
-              <th>Description</th>
-              <th>Status</th>
-              <th>Start date</th>
-              <th>Category</th>
-              <th>To do before</th>
+              <th>Tache</th>
+              <th>Priorité</th>
+              <th>Voir</th>
             </tr>
           </thead>
           <tbody>
@@ -31,17 +29,8 @@ class ConsultToDoListe extends Component {
               <td>ezoihzueovhu</td>
               <td>1</td>
               <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td> 
-            </tr>
-            
-            <tr>
-              <td>2</td>
-              <td colSpan={1}>Larry the Bird</td>
-              <td>@twitter</td>
+              <td><NavLink className="nav-link col-12" aria-current="page" to="/cardTask"><IconEdite/></NavLink>
+</td> 
             </tr>
           </tbody>
         </Table>
