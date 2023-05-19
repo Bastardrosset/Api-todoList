@@ -38,6 +38,7 @@ const TaskSchema = new mongoose.Schema({
         default: 'En attente'
     },
     deadline: [Date],
+    startDate: [Date],
     createdAt: {
         type: Date,
         default: Date.now(),
